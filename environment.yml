@@ -1,0 +1,4 @@
+name: flask_web_dev
+dependencies:
+- python=3
+- flask
