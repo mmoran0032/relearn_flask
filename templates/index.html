@@ -7,6 +7,8 @@
     <h1>Hello, Laura!</h1>
 </div>
 <div class="page-content">
-    <p>Your browser is {{ user_agent }}</p>
+    <p>Browser: {{ user_agent }}</p>
+    <p>Time: {{ moment(current_time).format('LLL') }}</p>
+    <p>Last update: {{ moment(current_time).fromNow(refresh=True) }}
 </div>
 {% endblock %}
