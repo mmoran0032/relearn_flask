@@ -7,5 +7,6 @@ dependencies:
 - flask
 - flask-moment
 - flask-script
+- flask-wtf
 - pip:
   - flask-bootstrap
