@@ -1,4 +1,7 @@
 name: flask_web_dev
+channels:
+- conda-forge
 dependencies:
 - python=3
 - flask
+- flask-script
