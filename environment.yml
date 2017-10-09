@@ -5,6 +5,7 @@ channels:
 dependencies:
 - python=3
 - flask
+- flask-migrate
 - flask-moment
 - flask-script
 - flask-sqlalchemy
