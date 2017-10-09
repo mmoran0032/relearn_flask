@@ -3,7 +3,9 @@
 
 from datetime import datetime
 
-from flask import Flask, redirect, render_template, request, session, url_for
+from flask import (
+    flash, Flask, redirect, render_template, request, session, url_for
+)
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_script import Manager
@@ -30,7 +32,11 @@ moment = Moment(app)
 def index():
     form = NameForm()
     if form.validate_on_submit():
+        old_name = session.get('name')
+        if old_name and old_name != form.name.data:
+            flash(f'Name changed to {form.name.data}')
         session['name'] = form.name.data
+        form.name.data = ''
         return redirect(url_for('index'))
     user_agent = request.headers.get('User-Agent')
     return render_template('index.html',
