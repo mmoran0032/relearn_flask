@@ -4,28 +4,18 @@
 from datetime import datetime
 
 from flask import (
-    flash, Flask, redirect, render_template, request, session, url_for
+    flash, redirect, render_template, request, session, url_for
 )
-from flask_bootstrap import Bootstrap
-from flask_moment import Moment
-from flask_script import Manager
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import Required
+
+from . import app, manager
 
 
 class NameForm(FlaskForm):
     name = StringField('Name:', validators=[Required()])
     submit = SubmitField('Submit')
-
-
-app = Flask(__name__)
-with open('secret_key.txt', 'r') as f:
-    app.config['SECRET_KEY'] = f.read().strip()
-
-bootstrap = Bootstrap(app)
-manager = Manager(app)
-moment = Moment(app)
 
 
 @app.route('/', methods=['GET', 'POST'])
