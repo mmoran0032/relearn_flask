@@ -5,7 +5,7 @@ from pathlib import Path
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
-from flask_script import Manager
+from flask_script import Manager, Shell
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -24,3 +24,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 from .models import Role, User
+
+
+def make_shell_context():
+    return dict(app=app, db=db, Role=Role, User=User)
+
+
+manager.add_command('shell', Shell(make_context=make_shell_context))

@@ -10,7 +10,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import Required
 
-from . import app, manager
+from . import app, db, manager, User
 
 
 class NameForm(FlaskForm):
@@ -22,6 +22,15 @@ class NameForm(FlaskForm):
 def index():
     form = NameForm()
     if form.validate_on_submit():
+        user = User.query.filter_by(username=form.name.data.lower()).first()
+        if not user:
+            user = User(username=form.name.data.lower())
+            db.session.add(user)
+            session['known'] = False
+            flash(f'User {form.name.data} added')
+        else:
+            session['known'] = True
+
         old_name = session.get('name')
         if old_name and old_name != form.name.data:
             flash(f'Name changed to {form.name.data}')
@@ -33,7 +42,8 @@ def index():
                            user_agent=user_agent,
                            current_time=datetime.utcnow(),
                            form=form,
-                           name=session.get('name'))
+                           name=session.get('name'),
+                           known=session.get('known', False))
 
 
 @app.route('/user/<name>')
