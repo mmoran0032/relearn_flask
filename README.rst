@@ -12,6 +12,6 @@ Usage
 
 Run the application on the testing server with::
 
-    python3 -m test_app runserver
+    python3 -m app runserver
 
 Creating the database is done by running ``setup_test_database.py``.
