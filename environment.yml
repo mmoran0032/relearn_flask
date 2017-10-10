@@ -3,12 +3,12 @@ channels:
 - conda-forge
 - default
 dependencies:
-- python=3
-- flask
-- flask-migrate
-- flask-moment
-- flask-script
-- flask-sqlalchemy
-- flask-wtf
+- python=3.6.2
+- flask=0.12.2
+- flask-migrate=2.1.1
+- flask-moment=0.5.1
+- flask-script=2.0.6
+- flask-sqlalchemy=2.3.0
+- flask-wtf=0.14.2
 - pip:
-  - flask-bootstrap
+  - flask-bootstrap=3.3.7.1
