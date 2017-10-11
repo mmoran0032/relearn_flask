@@ -5,6 +5,7 @@ channels:
 dependencies:
 - python=3.6.2
 - flask=0.12.2
+- flask-mail=0.9.1
 - flask-migrate=2.1.1
 - flask-moment=0.5.1
 - flask-script=2.0.6

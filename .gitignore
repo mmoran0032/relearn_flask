@@ -1,3 +1,4 @@
 .cache
 
 secret_key.txt
+email_secret.json
